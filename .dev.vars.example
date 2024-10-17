@@ -1,0 +1,4 @@
+# passwordless, authenticated role
+DATABASE_URL=
+# neondb_owner role
+OWNER_DATABASE_URL=

@@ -34,8 +34,9 @@ PRIVATE_KEY=''
 3. Deploy this demo with `bun run deploy`.
 4. Go to `https://my-honc-service.<your-name>.workers.dev/.well-known/jwks.json` to verify the public key is being served appropriately.
 5. Go to the Authorize page in the Neon console and add an auth provider (type should be "Other"), and set the JWKS URL to the URL from the previous step.
-6. Apply migrations with `bun run db:migrate` (you'll have to populate `.dev.vars` with the database URLs from the Neon console). Notice that there's 2 different database URLs that are expected in the `.dev.vars` file. The first one is for the `neondb_owner` role, and the second one is for the `authenticated, passwordless` role.
-7. Seed the database with `bun run db:seed`.
-8. Grab the `authenticated` role's database URL from the Neon console and set it in the `.dev.vars` file, as well as in the `wrangler.toml` file.
-9. Deploy this demo again with `bun run deploy`.
-10. Head to `https://my-honc-service.<your-name>.workers.dev/api/users` and `https://my-honc-service.<your-name>.workers.dev/api/tenants` to verify that the API is working as intended.
+6. Follow the steps in the UI to setup the roles for Neon Authorize. You should ignore the schema related steps if you're following this guide
+7. Apply migrations with `bun run db:migrate` (you'll have to populate `.dev.vars` with the database URLs from the Neon console). Notice that there's 2 different database URLs that are expected in the `.dev.vars` file. The first one is for the `neondb_owner` role, and the second one is for the `authenticated, passwordless` role.
+8. Seed the database with `bun run db:seed`.
+9. Grab the `authenticated` role's database URL from the Neon console and set it in the `.dev.vars` file, as well as in the `wrangler.toml` file.
+10. Deploy this demo again with `bun run deploy`.
+11. Head to `https://my-honc-service.<your-name>.workers.dev/api/users` and `https://my-honc-service.<your-name>.workers.dev/api/tenants` to verify that the API is working as intended.

@@ -8,15 +8,16 @@
     "db:seed": "tsx seed.ts"
   },
   "dependencies": {
-    "@neondatabase/serverless": "^0.10.1",
+    "@neondatabase/serverless": "^0.10.4",
     "dotenv": "^16.4.5",
-    "drizzle-orm": "^0.34.1-a5ec472",
+    "drizzle-orm": "^0.38.3",
     "hono": "^4.5.0",
-    "jose": "^5.9.4"
+    "jose": "^5.9.4",
+    "uuid": "^11.0.4"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240403.0",
-    "drizzle-kit": "^0.25.0-a5ec472",
+    "@cloudflare/workers-types": "^4.20250109.0",
+    "drizzle-kit": "^0.30.1",
     "tsx": "^4.11.0",
     "wrangler": "^3.47.0"
   }

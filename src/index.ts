@@ -5,7 +5,7 @@ import { tenants, users } from "./db/schema";
 import { SignJWT, JWK } from "jose";
 
 type Bindings = {
-  DATABASE_URL: string;
+  DATABASE_AUTHENTICATED_URL: string;
   PRIVATE_KEY: string;
   PUBLIC_KEY: string;
 };
@@ -13,11 +13,12 @@ type Bindings = {
 const app = new Hono<{ Bindings: Bindings }>();
 
 async function createJWT(privateKey: JWK) {
+  // This example demonstrates JWT token creation and signing. When integrating with your application, ensure that the tenant_id and user_id are dynamically adjusted based on the user's session.
   const jwt = await new SignJWT({
-    tenant_id: "f330c503-5e9c-46a7-8393-2995aeb03675",
+    tenant_id: "f330c503-5e9c-46a7-8393-2995aeb03675", // As an example, the tenant id is being hardcoded here
   })
     .setProtectedHeader({ alg: "RS256", kid: "my-key-id" })
-    .setSubject("2e7e25e8-5445-40bd-8f89-dc19bba64faa")
+    .setSubject("2e7e25e8-5445-40bd-8f89-dc19bba64faa") // As an example, the user id is being hardcoded here
     .setExpirationTime("1h")
     .setIssuedAt()
     .sign(privateKey);
@@ -49,7 +50,7 @@ app.get("/api/users", async (c) => {
   const privateKeyJwk: JWK = JSON.parse(c.env.PRIVATE_KEY);
   const authToken = await createJWT(privateKeyJwk);
 
-  const db = drizzle(neon(c.env.DATABASE_URL, {
+  const db = drizzle(neon(c.env.DATABASE_AUTHENTICATED_URL, {
     authToken,
   }));
 
@@ -62,12 +63,12 @@ app.get("/api/tenants", async (c) => {
   const privateKeyJwk: JWK = JSON.parse(c.env.PRIVATE_KEY);
   const authToken = await createJWT(privateKeyJwk);
 
-  const db = drizzle(neon(c.env.DATABASE_URL, {
+  const db = drizzle(neon(c.env.DATABASE_AUTHENTICATED_URL, {
     authToken,
   }));
 
   return c.json({
-    users: await db.select().from(tenants),
+    tenants: await db.select().from(tenants),
   });
 });
 

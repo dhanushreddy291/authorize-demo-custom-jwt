@@ -6,7 +6,7 @@ This project demonstrates how to leverage **Neon Authorize** using Custom JWT's.
 
 ### **Why is this important?**
 
-Neon Authorize empowers you to move authorization logic closer to your data in PostgreSQL. By using custom JWTs, you maintain complete control over the token generation process while still benefiting from Neon Authorize's seamless integration with RLS. This approach is valuable when you have specific requirements for your JWT structure or want to avoid dependencies on external auth providers for certain internal workflows.
+Neon Authorize lets you move authorization logic closer to your data in PostgreSQL. By using custom JWTs, you maintain complete control over the token generation process while still benefiting from Neon Authorize's integration with RLS. This approach is valuable when you have specific requirements for your JWT structure or want to avoid dependencies on external auth providers for certain internal workflows.
 
 This demo is built as a [HONC](https://honc.dev/) API and exposes the following endpoints to illustrate these concepts:
 

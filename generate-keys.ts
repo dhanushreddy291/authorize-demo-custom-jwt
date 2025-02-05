@@ -1,10 +1,7 @@
-// generate-keys.ts
-
 import { generateKeyPair, exportJWK } from 'jose';
 import fs from 'fs';
 
 async function generateAndExportKeys() {
-  // Set extractable to true
   const { publicKey, privateKey } = await generateKeyPair('RS256', { extractable: true });
 
   const privateJwk = await exportJWK(privateKey);
